@@ -4,9 +4,9 @@ let player;
 let otherChars = new Array(5).fill();
 
 function setup() {
-	player = new Character(new Vector(canvas.width/2 - 25, canvas.height/2 - 25),
-						   new Vector(50, 50), 
-						   new Color(100, 100, 255));
+	player = new Player(new Vector(canvas.width/2 - 25, canvas.height/2 - 25),
+			    new Vector(50, 50), 
+			    new Color(100, 100, 255));
 
 	for(let i in otherChars) {
 		otherChars[i] = new Character(new Vector(randomInt(0, canvas.width - 25), randomInt(0, canvas.height - 25)), 
@@ -16,6 +16,8 @@ function setup() {
 }
 
 function loop() {
+	player.update();
+
 	background(52);
 	drawCharacters();
 }
