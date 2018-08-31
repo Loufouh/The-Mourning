@@ -1,0 +1,12 @@
+
+body {
+	height: 100vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+canvas {
+	border-radius: 3px;
+	border: 0px solid black;
+}
