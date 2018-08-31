@@ -7,6 +7,7 @@ window.onload = init;
 
 function init() {
 	initCanvas();
+	initKeyListeners();
 	setup();
 	startLooping();
 }
