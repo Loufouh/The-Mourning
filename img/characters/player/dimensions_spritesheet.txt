@@ -1,0 +1,2 @@
+borders: 5px
+sprite: 32*32px
