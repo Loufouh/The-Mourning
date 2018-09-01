@@ -8,19 +8,11 @@ const player_states = {
 	IDLE_DOWN: "1",
 	IDLE_RIGHT: "2",
 	IDLE_LEFT: "3",
-	IDLE_UP_LEFT: "4",
-	IDLE_UP_RIGHT: "5",
-	IDLE_DOWN_LEFT: "6",
-	IDLE_DOWN_RIGHT: "7",
 	
-	WALK_UP: "8",
-	WALK_DOWN: "9",
-	WALK_RIGHT: "10",
-	WALK_LEFT: "11",
-	WALK_UP_LEFT: "12",
-	WALK_UP_RIGHT: "13",
-	WALK_DOWN_LEFT: "14",
-	WALK_DOWN_RIGHT: "15"
+	WALK_UP: "4",
+	WALK_DOWN: "5",
+	WALK_RIGHT: "6",
+	WALK_LEFT: "7",
 }
 
 class Player extends Character {
@@ -56,19 +48,7 @@ class Player extends Character {
 	}
 
 	determineState() {
-		if(keys_state.UP && keys_state.LEFT) {
-			this.state = player_states.WALK_UP_LEFT;
-		} 
-		else if(keys_state.UP && keys_state.RIGHT) {
-			this.state = player_states.WALK_UP_RIGHT;
-		}
-		else if(keys_state.DOWN && keys_state.LEFT) {
-			this.state = player_states.WALK_DOWN_LEFT;
-		}
-		else if(keys_state.DOWN && keys_state.RIGHT) {
-			this.state = player_states.WALK_DOWN_RIGHT;
-		}
-		else if(keys_state.UP && !keys_state.DOWN) {
+		if(keys_state.UP && !keys_state.DOWN) {
 			this.state = player_states.WALK_UP;
 		}
 		else if(keys_state.DOWN && !keys_state.UP) {
@@ -152,53 +132,6 @@ class Player extends Character {
 	}
 	
 	draw() {
-		noStroke();
-		fill(this.color);
-		
-		switch(this.state) {
-			case player_states.IDLE_UP_LEFT:
-				strokeWeight(3);
-				stroke(new Color(100, 255, 100));
-				line(canvas.width/2, canvas.height/2, canvas.width/2 - 71, canvas.height/2 - 71);
-				break;
-			case player_states.IDLE_UP_RIGHT:
-				strokeWeight(3);
-				stroke(new Color(100, 255, 100));
-				line(canvas.width/2, canvas.height/2, canvas.width/2 + 71, canvas.height/2 - 71);
-				break;
-			case player_states.IDLE_DOWN_LEFT:
-				strokeWeight(3);
-				stroke(new Color(100, 255, 100));
-				line(canvas.width/2, canvas.height/2, canvas.width/2 - 71, canvas.height/2 + 71);
-				break;
-			case player_states.IDLE_DOWN_RIGHT:
-				strokeWeight(3);
-				stroke(new Color(100, 255, 100));
-				line(canvas.width/2, canvas.height/2, canvas.width/2 + 71, canvas.height/2 + 71);
-				break;
-			case player_states.WALK_UP_LEFT:
-				strokeWeight(3);
-				stroke(new Color(255, 100, 100));
-				line(canvas.width/2, canvas.height/2, canvas.width/2 - 71, canvas.height/2 - 71);
-				break;
-			case player_states.WALK_UP_RIGHT:
-				strokeWeight(3);
-				stroke(new Color(255, 100, 100));
-				line(canvas.width/2, canvas.height/2, canvas.width/2 + 71, canvas.height/2 - 71);
-				break;
-			case player_states.WALK_DOWN_LEFT:
-				strokeWeight(3);
-				stroke(new Color(255, 100, 100));
-				line(canvas.width/2, canvas.height/2, canvas.width/2 - 71, canvas.height/2 + 71);
-				break;
-			case player_states.WALK_DOWN_RIGHT:
-				strokeWeight(3);
-				stroke(new Color(255, 100, 100));
-				line(canvas.width/2, canvas.height/2, canvas.width/2 + 71, canvas.height/2 + 71);
-				break;
-			default:
-				this.animation.draw();
-				break;
-		}
+		this.animation.draw();
 	}
 }
