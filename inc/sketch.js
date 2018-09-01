@@ -42,7 +42,7 @@ function loop() {
 
 function enableThumb() {
 	toogleThumb();
-	setTimeout(enableThumb, randomInt(1000, 10000));
+	setTimeout(enableThumb, randomInt(4000, 10000));
 }
 
 function toogleThumb() {
