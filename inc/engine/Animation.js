@@ -13,7 +13,12 @@ class Animation {
 	}
 
 	draw() {
-		drawImage(this.spriteSheet.img, this.pos.x, this.pos.y, this.dim.x, this.dim.y);
+		drawImage(this.spriteSheet.img,
+				  this.indeces[this.currentSpriteIndex]*(this.spriteSheet.spritesDim.x + this.spriteSheet.borderSize) + this.spriteSheet.borderSize, 0,
+				  this.spriteSheet.spritesDim.x, this.spriteSheet.spritesDim.y,
+				  this.pos.x, this.pos.y,
+				  this.dim.x, this.dim.y);
+
 		this.currentLifeSpan--;
 
 		if(this.currentLifeSpan <= 0) {

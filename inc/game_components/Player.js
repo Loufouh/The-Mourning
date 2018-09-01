@@ -1,5 +1,7 @@
 "use strict";
 
+const WSS = 5; // walking sprite speed
+
 const player_states = {
 	IDLE_UP: "0",
 	IDLE_DOWN: "1",
@@ -36,11 +38,10 @@ class Player extends Character {
 			walkRight: new Image()
 		};
 
-		this.spriteSheets.walkUp.src = "img/characters/player/walk-up/spritesSheet.png";
-		this.spriteSheets.walkDown.src = "img/characters/player/walk-down/spritesSheet.png";
-		this.spriteSheets.walkLeft.src = "img/characters/player/walk-left/spritesSheet.png";
-		this.spriteSheets.walkRight.src = "img/characters/player/walk-right/spritesSheet.png";
-
+		this.spriteSheets.walkUp.src = "img/characters/player/walk-up/spritesheet.png";
+		this.spriteSheets.walkDown.src = "img/characters/player/walk-down/spritesheet.png";
+		this.spriteSheets.walkLeft.src = "img/characters/player/walk-left/spritesheet.png";
+		this.spriteSheets.walkRight.src = "img/characters/player/walk-right/spritesheet.png";
 	}
 	
 	update() {
@@ -108,43 +109,43 @@ class Player extends Character {
 		switch(this.state) {
 			case player_states.IDLE_UP:
 				this.animation = new Animation(new SpriteSheet(this.spriteSheets.walkUp, new Vector(32, 32), 5),
-											   new Vector(canvas.width/2 - 25),
-											   [0], [1], new Vector(50, 50));
+											   new Vector(canvas.width/2 - this.dim.x/2, canvas.height/2 - this.dim.y/2),
+											   [0], [1], new Vector(this.dim.x, this.dim.y));
 				break;
 			case  player_states.IDLE_DOWN:
 				this.animation = new Animation(new SpriteSheet(this.spriteSheets.walkDown, new Vector(32, 32), 5),
-											   new Vector(canvas.width/2 - 25),
-											   [0], [1], new Vector(50, 50));
+											   new Vector(canvas.width/2 - this.dim.x/2, canvas.height/2 - this.dim.y/2),
+											   [0], [1], new Vector(this.dim.x, this.dim.y));
 				break;
 			case  player_states.IDLE_LEFT:
 				this.animation = new Animation(new SpriteSheet(this.spriteSheets.walkLeft, new Vector(32, 32), 5),
-											   new Vector(canvas.width/2 - 25),
-											   [0], [1], new Vector(50, 50));
+											   new Vector(canvas.width/2 - this.dim.x/2, canvas.height/2 - this.dim.y/2),
+											   [0], [1], new Vector(this.dim.x, this.dim.y));
 				break;
 			case player_states.IDLE_RIGHT:
 				this.animation = new Animation(new SpriteSheet(this.spriteSheets.walkRight, new Vector(32, 32), 5),
-											   new Vector(canvas.width/2 - 25),
-											   [0], [1], new Vector(50, 50));
+											   new Vector(canvas.width/2 - this.dim.x/2, canvas.height/2 - this.dim.y/2),
+											   [0], [1], new Vector(this.dim.x, this.dim.y));
 				break;
 			case player_states.WALK_UP:
 				this.animation = new Animation(new SpriteSheet(this.spriteSheets.walkUp, new Vector(32, 32), 5),
-											   new Vector(canvas.width/2 - 25),
-											   [0, 1, 2, 3, 4, 5, 6, 7], [3, 3, 3, 3, 3, 3, 3, 3], new Vector(50, 50));
+											   new Vector(canvas.width/2 - this.dim.x/2, canvas.height/2 - this.dim.y/2),
+											   [0, 1, 2, 3, 4, 5, 6, 7], [WSS, WSS, WSS, WSS, WSS, WSS, WSS, WSS], new Vector(this.dim.x, this.dim.y));
 				break;
 			case player_states.WALK_DOWN:
 				this.animation = new Animation(new SpriteSheet(this.spriteSheets.walkDown, new Vector(32, 32), 5),
-											   new Vector(canvas.width/2 - 25),
-											   [0, 1, 2, 3, 4, 5, 6, 7], [3, 3, 3, 3, 3, 3, 3, 3], new Vector(50, 50));
+											   new Vector(canvas.width/2 - this.dim.x/2, canvas.height/2 - this.dim.y/2),
+											   [0, 1, 2, 3, 4, 5, 6, 7], [WSS, WSS, WSS, WSS, WSS, WSS, WSS, WSS], new Vector(this.dim.x, this.dim.y));
 				break;
 			case player_states.WALK_LEFT:
 				this.animation = new Animation(new SpriteSheet(this.spriteSheets.walkLeft, new Vector(32, 32), 5),
-											   new Vector(canvas.width/2 - 25),
-											   [0, 1, 2, 3, 4, 5], [3, 3, 3, 3, 3, 3], new Vector(50, 50));
+											   new Vector(canvas.width/2 - this.dim.x/2, canvas.height/2 - this.dim.y/2),
+											   [0, 1, 2, 3, 4, 5], [WSS, WSS, WSS, WSS, WSS, WSS], new Vector(this.dim.x, this.dim.y));
 				break;
 			case player_states.WALK_RIGHT:
 				this.animation = new Animation(new SpriteSheet(this.spriteSheets.walkRight, new Vector(32, 32), 5),
-											   new Vector(canvas.width/2 - 25),
-											   [0, 1, 2, 3, 4, 5], [3, 3, 3, 3, 3, 3], new Vector(50, 50));
+											   new Vector(canvas.width/2 - this.dim.x/2, canvas.height/2 - this.dim.y/2),
+											   [0, 1, 2, 3, 4, 5], [WSS, WSS, WSS, WSS, WSS, WSS], new Vector(this.dim.x, this.dim.y));
 				break;
 		}
 	}
@@ -152,7 +153,6 @@ class Player extends Character {
 	draw() {
 		noStroke();
 		fill(this.color);
-		//rect(this.pos.x, this.pos.y, this.dim.x, this.dim.y);
 		
 		switch(this.state) {
 			case player_states.IDLE_UP_LEFT:
