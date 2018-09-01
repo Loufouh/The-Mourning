@@ -1,17 +1,20 @@
 "use strict";
 
-class GameMap {
+class GameMap extends GameObject {
 	constructor(dim, color) {
-		this.pos = new Vector(0, 0);
-		this.dim = dim;
-		this.color = color;
+		super(new Vector(0, 0), dim, color)
 	}
 
 	draw() {
 		this.updatePos();
-		stroke(new Color(255, 100, 100));
+
+		stroke(new Color(100, 100, 255));
+		strokeWeight(4);
 		fill(this.color);
+		
 		rect(this.pos.x, this.pos.y, this.dim.x, this.dim.y);
+
+		this.drawContent();
 	}
 
 	updatePos() {
