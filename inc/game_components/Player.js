@@ -15,7 +15,7 @@ const player_states = {
 	WALK_LEFT: "7",
 }
 
-class Player extends Character {
+class Player extends GameObject {
 	constructor(pos, dim, color, state=player_states.IDLE_DOWN) {
 		super(pos, dim, color);
 		this.state = state; 
@@ -48,17 +48,23 @@ class Player extends Character {
 	}
 
 	determineState() {
+		let walkIncrement = 5;
+
 		if(keys_state.UP && !keys_state.DOWN) {
 			this.state = player_states.WALK_UP;
+			this.pos.y -= walkIncrement;
 		}
 		else if(keys_state.DOWN && !keys_state.UP) {
 			this.state = player_states.WALK_DOWN;
+			this.pos.y += walkIncrement;
 		}
 		else if(keys_state.RIGHT && !keys_state.LEFT) {
 			this.state = player_states.WALK_RIGHT;
+			this.pos.x += walkIncrement;
 		}
 		else if(keys_state.LEFT && !keys_state.RIGHT) {
 			this.state = player_states.WALK_LEFT;
+			this.pos.x -= walkIncrement;
 		}
 		else if(this.state === player_states.WALK_UP_LEFT) {
 			this.state = player_states.IDLE_UP_LEFT;
