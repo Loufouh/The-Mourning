@@ -7,6 +7,7 @@ let body;
 let sonateAudio;
 let thunderAudio;
 
+let isDisplaying = false;
 let isNight = true;
 
 function setup() {
@@ -23,9 +24,14 @@ function setup() {
 					       new Vector(25, 25), 
 					       new Color(255, 255, 100)) );
 	}
+
+	sonateAudio.play();
+
+	alert("Il est conseillé de jouer en plein écran.");
+	
+	setTimeout(()=>canvas.classList.remove("hidden"), 3000);
 	setTimeout(enableThumb, 9000);
 	body.classList.add("night");
-	sonateAudio.play();
 }
 
 function loop() {
@@ -35,9 +41,9 @@ function loop() {
 
 	map.draw();
 	player.draw();
-
+	
 	if(isNight)
-		background(new Color(0, 0, 100, 0.5))
+		background(new Color(0, 0, 100, 0.5));
 }
 
 function enableThumb() {
