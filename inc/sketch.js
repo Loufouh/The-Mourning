@@ -4,14 +4,14 @@ let player;
 let map;
 
 let body;
-let metallicMonksAudio;
+let sonateAudio;
 let thunderAudio;
 
 let isNight = true;
 
 function setup() {
 	body = document.querySelector("body");
-	metallicMonksAudio = document.querySelector("#metallicMonksAudio");
+	sonateAudio = document.querySelector("#sonateAudio");
 	thunderAudio = document.querySelector("#thunderAudio");
 
 	player = new Player(new Vector(canvas.width/2 - 25, canvas.height/2 - 25),
@@ -25,7 +25,7 @@ function setup() {
 	}
 	setTimeout(enableThumb, randomInt(1000, 10000));
 	body.classList.add("night");
-	metallicMonksAudio.play();
+	sonateAudio.play();
 }
 
 function loop() {
