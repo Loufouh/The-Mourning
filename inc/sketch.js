@@ -49,8 +49,14 @@ function toogleThumb() {
 	let body = document.querySelector("body");
 
 	body.classList.add("thumb");
+
+	if(random(0, 50) < 20)
+		canvas.classList.add("thumb");
 	thunderAudio.play();
 
 	setTimeout(()=>thunderAudio.pause(), 3980);
-	setTimeout(()=>body.classList.remove("thumb"), 5000);
+	setTimeout(()=> {
+		body.classList.remove("thumb");
+		canvas.classList.remove("thumb");	
+	}, 5000);
 }
