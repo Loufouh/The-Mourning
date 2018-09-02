@@ -19,8 +19,8 @@ class GameMap extends GameObject {
 
 	updatePos() {
 		if(player !== undefined) {
-			this.pos.x = canvas.width/2 - player.pos.x;
-			this.pos.y = canvas.width/2 - player.pos.y;
+			this.pos.x = canvas.width/2 - (player.pos.x + player.dim.x/2);
+			this.pos.y = canvas.width/2 - (player.pos.y + player.dim.y/2);
 		}
 	}
 }

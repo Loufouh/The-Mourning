@@ -20,10 +20,10 @@ function setup() {
 
 	for(let i = 0; i < 125; i++) {
 		map.addContent( new GameObject(new Vector(randomInt(0, map.dim.x - 25), randomInt(0, map.dim.y - 25)), 
-					       			   new Vector(25, 25), 
-									   new Color(255, 255, 100)) );
+					       new Vector(25, 25), 
+					       new Color(255, 255, 100)) );
 	}
-	setTimeout(enableThumb, randomInt(1000, 10000));
+	setTimeout(enableThumb, 9000);
 	body.classList.add("night");
 	sonateAudio.play();
 }
@@ -42,7 +42,7 @@ function loop() {
 
 function enableThumb() {
 	toogleThumb();
-	setTimeout(enableThumb, randomInt(4000, 10000));
+	setTimeout(enableThumb, randomInt(4000, 20000));
 }
 
 function toogleThumb() {
