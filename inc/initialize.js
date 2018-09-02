@@ -1,15 +1,18 @@
 "use strict";
 
+let body;
 let canvas;
 let controllingLoopTimeout;
 
 window.onload = init;
 
 function init() {
+	body = document.querySelector("body");
 	initCanvas();
 	initKeyListeners();
-	setup();
-	startLooping();
+
+	alert("Pour lancer le jeu, il faut cliquer n'importe où sur la page,\naprès la fermeture de cette boîte de dialogue !")
+	body.addEventListener("click", start);
 }
 
 function initCanvas() {
@@ -23,6 +26,13 @@ function initCanvas() {
 
 	ctx.webkitImageSmoothingEnabled = false;
 	ctx.imageSmoothingEnabled = false;
+}
+
+function start() {
+	canvas.classList.add("isPlaying");
+	setup();
+	startLooping();
+	body.removeEventListener("click", start);
 }
 
 function controllingLoop() {
