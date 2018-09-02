@@ -52,11 +52,12 @@ function toogleThumb() {
 
 	if(random(0, 50) < 20)
 		canvas.classList.add("thumb");
+	thunderAudio.currentTime = 0;
 	thunderAudio.play();
 
 	setTimeout(()=>thunderAudio.pause(), 3980);
 	setTimeout(()=> {
 		body.classList.remove("thumb");
 		canvas.classList.remove("thumb");	
-	}, 5000);
+	}, 3500);
 }
