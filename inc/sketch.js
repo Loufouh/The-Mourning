@@ -17,7 +17,6 @@ function setup() {
 			    new Vector(150, 150));
 	map = new GameMap(new Vector(), new Color(52, 100, 52));
 
-	sonateAudio.play();
 	alert("Il est conseillé de jouer en plein écran, avec des écouteurs.");
 	setScene1();
 }
