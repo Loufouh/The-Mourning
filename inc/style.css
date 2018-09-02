@@ -24,6 +24,8 @@ canvas {
 	border-radius: 3px;
 	border: 0px solid black;
 	opacity: 1;
+	cursor: none;
+
 	-webkit-transition: opacity 3s;
 	transition: opacity 3s;
 }
