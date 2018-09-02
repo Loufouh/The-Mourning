@@ -25,8 +25,11 @@ class GameObject {
 	}
 
 	drawContent() {
-		for(let o of this.content)
+		for(let o of this.content) {
+			if(o.update !== undefined)
+				o.update();
 			o.draw();
+		}
 	}
 
 	getAbsolutePos() {

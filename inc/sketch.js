@@ -29,6 +29,16 @@ function loop() {
 	player.draw();
 
 	drawFilter();
+
+	if(scene === 1 && player.pos.y > 1000) {
+		canvas.classList.add("hidden");
+		scene = 2;
+		setTimeout(setScene2, 4000);
+	} else if(scene === 2 && player.pos.x > 1000) {
+		canvas.classList.add("hidden");
+		setTimeout(()=>alert("Fin de la version Game jam, merci à tous pour le soutient !"), 4000);
+	}
+		
 }
 
 
