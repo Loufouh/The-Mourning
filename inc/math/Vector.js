@@ -21,4 +21,8 @@ class Vector {
 	static divide(v, value) {
 		return new Vector(v.x/value, v.y/value);
 	}
+
+	static abs(v) {
+		return new Vector(Math.abs(v.x), Math.abs(v.y));
+	}
 }
