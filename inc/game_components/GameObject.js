@@ -1,24 +1,45 @@
 "use strict";
 
 class GameObject {
-	constructor(pos, dim, posType=GameObjectPosType.TOP_LEFT_CORNER) {
+	constructor(pos, dim, color) {
+		this.pos = pos;
 		this.dim = dim;
-
-		this.setPos(pos, posType);
+		this.color = color;
+		this.content = [];
 	}
 
-	setPos(pos, posType=GameObjectPosType.TOP_LEFT_CORNER) {
-		// Error handling
-		if(!(pos instanceof Vector))
-			return error("pos isn't an instance of Vector !");
-		if(this.dim === undefined)
-			return error("this.dim is undefined !");
+	draw() {
+		let absPos = this.getAbsolutePos();
 
-		if(posType === GameObjectPosType.TOP_LEFT_CORNER)
-			this.pos = Vector.add(pos, Vector.divide(this.dim, 2));
-		else if(posType === GameObjectPosType.CENTER)
-			this.pos = pos;
-		else
-			return error("posType is not a value from GameObjectPosType !");
+		if(absPos.x + this.dim.x > 0 && absPos.y + this.dim.y > 0 && absPos.x < canvas.width && absPos.y < canvas.height) {
+			noStroke();
+			fill(this.color);
+	
+			if(map !== undefined)
+				rect(map.pos.x + this.pos.x, map.pos.y + this.pos.y, this.dim.x, this.dim.y);
+			else 
+				rect(this.pos.x, this.pos.y, this.dim.x, this.dim.y);
+
+			this.drawContent();
+		}
+	}
+
+	drawContent() {
+		for(let o of this.content) {
+			if(o.update !== undefined)
+				o.update();
+			o.draw();
+		}
+	}
+
+	getAbsolutePos() {
+		if(map !== undefined)
+			return new Vector(map.pos.x + this.pos.x, map.pos.y + this.pos.y);
+	}
+
+	addContent(gameObject) {
+		if(!(gameObject instanceof GameObject))
+			return error("gameObject n'est pas une instance de GameObject !");
+		this.content.push(gameObject);
 	}
 }

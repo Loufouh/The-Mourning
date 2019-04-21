@@ -18,11 +18,7 @@ class Vector {
 		return new Vector(v.x*value, v.y*value);
 	}
 
-	static divide(v, value) {
+	static multiply(v, value) {
 		return new Vector(v.x/value, v.y/value);
-	}
-
-	static abs(v) {
-		return new Vector(Math.abs(v.x), Math.abs(v.y));
 	}
 }
